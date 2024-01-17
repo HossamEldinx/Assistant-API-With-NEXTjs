@@ -7,7 +7,14 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+const getAllAssitants = async () => {
+  const myAssistants = await openai.beta.assistants.list({
+    order: "desc",
+    limit: "20",
+  });
 
+  return myAssistants;
+};
 
 //create assistants
 const createAssistant = async ({ name, instructions, fileId }) => {
@@ -49,6 +56,17 @@ const runCheck = async ({ threadId, runId }) => {
   return check;
 };
 
+/* const getAllThreads = async () =>{
+
+  const threadList = await openai.beta.threads.
+} */
+
+//create new thrad and also run it up make it work
+const createAndRunThread = async () => {
+  const newThread = await openai.beta.threads.createAndRun();
+  return newThread;
+};
+
 //create thread
 const createThread = async () => {
   const thread = await openai.beta.threads.create();
@@ -78,7 +96,10 @@ const createMessage = async ({ threadId, content }) => {
 
 //get messages
 const getMessages = async (threadId) => {
-  const messages = await openai.beta.threads.messages.list(threadId);
+  const messages = await openai.beta.threads.messages.list(threadId, {
+    order: "asc",
+    limit: 100,
+  });
   return messages;
 };
 
@@ -93,6 +114,7 @@ const UploadFile = async (fileSrc) => {
 };
 
 module.exports = {
+  getAllAssitants,
   createAssistant,
   getAssistant,
   getMessages,
@@ -104,4 +126,5 @@ module.exports = {
   runCheck,
   runAssistant,
   UploadFile,
+  createAndRunThread,
 };

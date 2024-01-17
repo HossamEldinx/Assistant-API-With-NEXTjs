@@ -1,0 +1,38 @@
+.sidebar {
+  border-right: 2px solid #131313;
+  background-color: #0e0d0d !important;
+  padding: 20px 10px;
+
+  .chat-list {
+    height: 80vh;
+  }
+
+  .new-chat{
+    border: 1px solid #3f3f3f !important;
+    margin-bottom: 50px;
+  }
+
+
+  .list-group-item {
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: transparent !important;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    a{margin-left:5px ;}
+    .ico{
+      color: #c3c3c3;
+      font-size: 21px;
+    }
+    &:hover {
+      background-color: #3f3f3f !important;
+    }
+  }
+
+  .thread-active{
+    border: 1px solid #c3c3c3;
+  }
+}

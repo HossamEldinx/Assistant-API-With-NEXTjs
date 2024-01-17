@@ -40,7 +40,6 @@ export async function GET(req) {
   try {
     const assistantId = req.nextUrl.searchParams.get("assistantId");
 
-    console.log(assistantId);
     //error if missing
     if (!assistantId) {
       return NextResponse.json({ error: "Missing Query" }, { status: 400 });
